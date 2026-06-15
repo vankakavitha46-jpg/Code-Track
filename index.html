@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeTrack - Smart Daily Coding Platform</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+min-height:100vh;
+}
+
+/* LOGIN PAGE */
+
+#loginPage{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.login-box{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+padding:35px;
+border-radius:15px;
+width:350px;
+text-align:center;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+.login-box h1{
+margin-bottom:20px;
+color:#38bdf8;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+outline:none;
+}
+
+.btn{
+padding:12px 20px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+margin:5px;
+font-weight:bold;
+}
+
+.login-btn{
+background:#38bdf8;
+color:white;
+}
+
+.cancel-btn{
+background:#ef4444;
+color:white;
+}
+
+/* DASHBOARD */
+
+#dashboard{
+display:none;
+padding:20px;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px;
+background:#1e293b;
+border-radius:12px;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:#38bdf8;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:20px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+border-radius:12px;
+text-align:center;
+}
+
+.card h2{
+color:#38bdf8;
+margin-bottom:10px;
+}
+
+.platforms{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+margin-top:30px;
+}
+
+.platform-btn{
+background:#38bdf8;
+padding:15px;
+text-decoration:none;
+color:white;
+font-weight:bold;
+text-align:center;
+border-radius:10px;
+transition:.3s;
+}
+
+.platform-btn:hover{
+background:#0284c7;
+}
+
+.timer{
+margin-top:30px;
+background:#1e293b;
+padding:20px;
+border-radius:12px;
+text-align:center;
+}
+
+.timer h2{
+color:#38bdf8;
+margin-bottom:10px;
+}
+
+#time{
+font-size:40px;
+font-weight:bold;
+margin:10px 0;
+}
+
+.timer button{
+padding:10px 15px;
+margin:5px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.start{
+background:#22c55e;
+color:white;
+}
+
+.stop{
+background:#ef4444;
+color:white;
+}
+
+.resources{
+margin-top:30px;
+}
+
+.resources h2{
+margin-bottom:15px;
+color:#38bdf8;
+}
+
+.resource-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+}
+
+.resource{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+text-align:center;
+}
+
+footer{
+margin-top:30px;
+text-align:center;
+padding:15px;
+background:#1e293b;
+border-radius:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN PAGE -->
+
+<div id="loginPage">
+
+<div class="login-box">
+
+<h1>CodeTrack</h1>
+
+<input type="email" id="email" placeholder="Email">
+
+<input type="password" id="password" placeholder="Password">
+
+<button class="btn login-btn" onclick="login()">
+Login
+</button>
+
+<button class="btn cancel-btn" onclick="clearFields()">
+Cancel
+</button>
+
+</div>
+
+</div>
+
+<!-- DASHBOARD -->
+
+<div id="dashboard">
+
+<header>
+<div class="logo">CodeTrack</div>
+<h3>Smart Daily Coding Development Platform</h3>
+</header>
+
+<div class="cards">
+
+<div class="card">
+<h2>Current Level</h2>
+<h3>Level 1</h3>
+</div>
+
+<div class="card">
+<h2>Coding Streak</h2>
+<h3>0 Days</h3>
+</div>
+
+<div class="card">
+<h2>Problems Solved</h2>
+<h3>0</h3>
+</div>
+
+<div class="card">
+<h2>Achievement</h2>
+<h3>No Badges Yet</h3>
+</div>
+
+</div>
+
+<h2 style="margin-top:30px;color:#38bdf8;">
+Coding Platforms
+</h2>
+
+<div class="platforms">
+
+<a class="platform-btn" href="https://leetcode.com" target="_blank">
+LeetCode
+</a>
+
+<a class="platform-btn" href="https://www.hackerrank.com" target="_blank">
+HackerRank
+</a>
+
+<a class="platform-btn" href="https://www.codechef.com" target="_blank">
+CodeChef
+</a>
+
+<a class="platform-btn" href="https://www.geeksforgeeks.org" target="_blank">
+GeeksforGeeks
+</a>
+
+<a class="platform-btn" href="https://www.hackerearth.com" target="_blank">
+HackerEarth
+</a>
+
+<a class="platform-btn" href="https://workat.tech" target="_blank">
+WorkatTech
+</a>
+
+</div>
+
+<div class="timer">
+
+<h2>Daily Coding Timer</h2>
+
+<div id="time">50:00</div>
+
+<button class="start" onclick="startTimer()">
+Start
+</button>
+
+<button class="stop" onclick="stopTimer()">
+Stop
+</button>
+
+</div>
+<div class="resource-grid">
+
+<a href="https://www.geeksforgeeks.org/c-programming-language/" target="_blank" class="resource">
+C Programming
+</a>
+
+<a href="https://www.geeksforgeeks.org/java/" target="_blank" class="resource">
+Java
+</a>
+
+<a href="https://www.geeksforgeeks.org/python-programming-language-tutorial/" target="_blank" class="resource">
+Python
+</a>
+
+<a href="https://www.geeksforgeeks.org/data-structures/" target="_blank" class="resource">
+DSA
+</a>
+
+<a href="https://www.geeksforgeeks.org/dbms/" target="_blank" class="resource">
+DBMS
+</a>
+
+<a href="https://www.geeksforgeeks.org/operating-systems/" target="_blank" class="resource">
+Operating Systems
+</a>
+
+<a href="https://www.geeksforgeeks.org/computer-network-tutorials/" target="_blank" class="resource">
+Computer Networks
+</a>
+
+<a href="https://www.geeksforgeeks.org/web-development/" target="_blank" class="resource">
+Web Development
+</a>
+
+</div>
+
+<footer>
+© 2026 CodeTrack | Build Consistency, Improve Skills
+</footer>
+
+</div>
+
+<script>
+
+function login(){
+
+let email=document.getElementById("email").value;
+let password=document.getElementById("password").value;
+
+if(email==="" || password===""){
+alert("Please enter Email and Password");
+return;
+}
+
+document.getElementById("loginPage").style.display="none";
+document.getElementById("dashboard").style.display="block";
+
+showTodayPlatform();
+
+}
+
+function clearFields(){
+document.getElementById("email").value="";
+document.getElementById("password").value="";
+}
+function dailyReminder(){
+
+const now = new Date();
+
+const hour = now.getHours();
+const minute = now.getMinutes();
+
+const platforms = {
+1:"LeetCode",
+2:"HackerRank",
+3:"CodeChef",
+4:"GeeksforGeeks",
+5:"HackerEarth",
+6:"WorkatTech",
+0:"Revision Day"
+};
+
+let day = now.getDay();
+
+if(hour >= 7 && minute >= 15){
+
+alert(
+"🔔 Daily Coding Reminder\n\n" +
+"It is time for your coding practice.\n\n" +
+"Today's Platform: " + platforms[day] +
+"\n\nComplete 50 minutes Coding + 25 minutes Learning."
+);
+
+}
+
+}
+
+function showTodayPlatform(){
+
+const platforms={
+1:"LeetCode",
+2:"HackerRank",
+3:"CodeChef",
+4:"GeeksforGeeks",
+5:"HackerEarth",
+6:"WorkatTech",
+0:"Revision Day"
+};
+
+let day=new Date().getDay();
+
+alert(
+"📢 Welcome to CodeTrack!\n\n" +
+"Today's Recommended Platform:\n" +
+platforms[day] +
+"\n\nComplete at least 50 minutes of coding today."
+);
+
+}
+
+/* TIMER */
+
+let timer;
+let totalSeconds=3000;
+
+function startTimer(){
+
+clearInterval(timer);
+
+timer=setInterval(function(){
+
+let minutes=Math.floor(totalSeconds/60);
+let seconds=totalSeconds%60;
+
+document.getElementById("time").innerHTML=
+String(minutes).padStart(2,'0')+
+":"+
+String(seconds).padStart(2,'0');
+
+if(totalSeconds<=0){
+clearInterval(timer);
+alert("🎉 Daily Coding Target Completed!");
+}
+
+totalSeconds--;
+
+},1000);
+
+}
+
+function stopTimer(){
+clearInterval(timer);
+}
+
+</script>
+</body>
+</html>
